@@ -1,10 +1,21 @@
 import "./App.scss";
 import "./styles/_reset.scss";
 import cards from "./data/cards";
-import Main from "./containers/Main/Main";
+// import Main from "./containers/Main/Main";
+import Card from "./components/Card/Card";
 
-function App() {
-  console.log(cards);
+const App = () => {
+  const cardsObjectJSX = cards.map((card) => {
+    return (
+      <Card
+        suit={card.suit}
+        colour={card.colour}
+        value={card.value}
+        symbol={card.symbol}
+      />
+    );
+  });
+
   return (
     <div className="app">
       <header className="App-header">
@@ -15,11 +26,11 @@ function App() {
         />
       </header>
       <main>
-        <Main cards={cards} />
+        <div className="app__card-holder">{cardsObjectJSX}</div>
       </main>
       <footer></footer>
     </div>
   );
-}
+};
 
 export default App;
