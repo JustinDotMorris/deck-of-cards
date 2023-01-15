@@ -1,27 +1,60 @@
 import "./Nav.scss";
 
-const Nav = () => {
+const Nav = ({ filterCards }) => {
   return (
-    <div>
-      <div>
+    <div className="nav__content">
+      <div className="nav__dropdown-container">
         <select
-          className="nav__suit-dropdown"
+          className="nav--suit-dropdown"
           placeholder="Suit"
           name="dropdown"
           id="dropdown"
         >
-          <option value="All Suits">All Suits</option>
-          <option value="spades">Spades</option>
-          <option value="diamonds">Diamonds</option>
-          <option value="clubs">Clubs</option>
-          <option value="hearts">Hearts</option>
+          <option value="Values">Value</option>
+          <option value="A">A</option>
         </select>
       </div>
       <div>
-        <input type="checkbox" name="spades" id="spades" />
-        <input type="checkbox" name="diamonds" id="diamonds" />
-        <input type="checkbox" name="clubs" id="clubs" />
-        <input type="checkbox" name="hearts" id="hearts" />
+        <label className="nav--checkbox-labels" htmlFor="spades">
+          ♠️
+        </label>
+        <input
+          className="nav--checkbox"
+          onClick={() => filterCards("spades")}
+          type="checkbox"
+          name="spades"
+          id="spades"
+        />
+        <label className="nav--checkbox-labels" htmlFor="diamonds">
+          ♦️
+        </label>
+        <input
+          className="nav--checkbox"
+          onClick={() => filterCards("diamonds")}
+          type="checkbox"
+          name="diamonds"
+          id="diamonds"
+        />
+        <label className="nav--checkbox-labels" htmlFor="clubs">
+          ♣️
+        </label>
+        <input
+          className="nav--checkbox"
+          onClick={() => filterCards("clubs")}
+          type="checkbox"
+          name="clubs"
+          id="clubs"
+        />
+        <label className="nav--checkbox-labels" htmlFor="hearts">
+          ♥️
+        </label>
+        <input
+          className="nav--checkbox"
+          onClick={() => filterCards("hearts")}
+          type="checkbox"
+          name="hearts"
+          id="hearts"
+        />
       </div>
     </div>
   );

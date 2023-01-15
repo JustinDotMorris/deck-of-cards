@@ -1,3 +1,26 @@
-.nav__suit-dropdown{
-    width: 5rem;
+.nav--suit-dropdown{
+
+    width: 80vw;
+    height: 2rem;
+}
+.nav--checkbox{
+    width: 2rem;
+    height: 2rem;
+    
+}
+.nav--checkbox-labels{
+    font-size: 2rem;
+    color: green;
+}
+.nav__content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.nav__dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
