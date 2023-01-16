@@ -13,6 +13,9 @@ const App = () => {
   const [clubsState, setClubsState] = useState(false);
   const [heartsState, setHeartsState] = useState(false);
   const [valueState, setValueState] = useState("");
+  const [searchState, setSearchState] = useState(false);
+
+  // console.log(valueState);
 
   const filterCards = (suit) => {
     if (suit === "spades") {
@@ -31,33 +34,52 @@ const App = () => {
 
   useEffect(() => {
     getFilters();
-  }, [spadesState, diamondsState, clubsState, heartsState]);
+  }, [
+    spadesState,
+    diamondsState,
+    clubsState,
+    heartsState,
+    valueState,
+    searchState,
+  ]);
 
   const getFilters = () => {
-    setCardState(
-      masterCardState.filter((card) => {
-        if (spadesState === true && card.suit === "spades") {
-          return card.suit === "spades";
-        }
-        if (diamondsState === true && card.suit === "diamonds") {
-          return card.suit === "diamonds";
-        }
-        if (clubsState === true && card.suit === "clubs") {
-          return card.suit === "clubs";
-        }
-        if (heartsState === true && card.suit === "hearts") {
-          return card.suit === "hearts";
-        }
-        if (
-          spadesState === false &&
-          diamondsState === false &&
-          clubsState === false &&
-          heartsState === false
-        ) {
-          return card;
-        }
-      })
-    );
+    // const test = masterCardState.filter((card) => {
+    //   console.log(card.value);
+    //   console.log(valueState);
+    //   return card.value == valueState;
+    // });
+    console.log("running");
+    if (
+      !spadesState &&
+      !diamondsState &&
+      !clubsState &&
+      !heartsState &&
+      !searchState
+    ) {
+      setCardState(masterCardState);
+    } else {
+      setCardState(
+        masterCardState.filter((card) => {
+          if (spadesState && card.suit === "spades") {
+            return card;
+          }
+          if (diamondsState && card.suit === "diamonds") {
+            return card;
+          }
+          if (clubsState && card.suit === "clubs") {
+            return card;
+          }
+          if (heartsState && card.suit === "hearts") {
+            return card;
+          }
+
+          if (searchState && card.value == valueState) {
+            return card;
+          }
+        })
+      );
+    }
   };
 
   const cardsObjectJSX = cardState.map((card) => {
@@ -79,10 +101,17 @@ const App = () => {
           src="https://www.stir.ac.uk/media/stirling/news/news-centre/2021/june/Bridge-card-game_BANNER_1920x689.jpg"
           alt=""
         />
-        <Nav filterCards={filterCards} searchValue={setValueState} />
+        <Nav
+          filterCards={filterCards}
+          searchValue={setValueState}
+          setSearchState={setSearchState}
+          searchState={searchState}
+        />
       </header>
       <main>
-        <div className="app__card-holder">{cardsObjectJSX}</div>
+        {cardState.length && (
+          <div className="app__card-holder">{cardsObjectJSX}</div>
+        )}
       </main>
       <footer></footer>
     </div>

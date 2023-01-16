@@ -1,10 +1,13 @@
 import "./Nav.scss";
-const Nav = ({ filterCards, searchValue }) => {
+const Nav = ({ filterCards, searchValue, setSearchState, searchState }) => {
   return (
     <div className="nav__content">
       <div className="nav__dropdown-container">
         <input
-          onChange={(event) => searchValue(event.target.value)}
+          onChange={(event) => {
+            searchValue(event.target.value);
+            setSearchState(!searchState);
+          }}
           id="valueSearchInput"
           placeholder="Search..."
           type="text"
