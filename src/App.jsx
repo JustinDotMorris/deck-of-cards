@@ -13,7 +13,6 @@ const App = () => {
   const [clubsState, setClubsState] = useState(false);
   const [heartsState, setHeartsState] = useState(false);
   const [valueState, setValueState] = useState("");
-  const [suitFilter, setSuitFilter] = useState("");
 
   console.log(valueState);
   // const handleSearch = cardState.filter((card) => {
@@ -23,31 +22,23 @@ const App = () => {
   //   }
   // });
 
-  // const handleSpades = () => {
-  //   setSpadesState(!spadesState);
-  //   console.log(spadesState);
-  // };
-
-  // const cardFilters = () => {
-  //   let filteredCardArray = cardState.filter((card) => {
-  //     if (spadesState === "true") {
-  //       return spadesState.suit === "spades";
-  //     }
-  //   });
-  //   return filteredCardArray;
-  // };
-
   //when clicked
   const filterCards = (suit) => {
     // setSuitFilter(suit);
     setSpadesState(!spadesState);
     //if current suit is spades
-    if (suit === "spades" && spadesState === true) {
-      //set spadesState to be true
+    if (suit === "spades") {
+      // set spadesState to be true
       //set cardsState to be only cards with spades
       setCardState(
         cardState.filter((card) => {
+          // if (suit === spades){
           return card.suit === "spades";
+          //   }
+          //   if (suit === diamonds){
+          //     return card.suit === "diamonds"
+          //   }
+          //   if (card.suit === "clubs")
         })
       );
     }
@@ -119,6 +110,21 @@ const App = () => {
 };
 
 export default App;
+
+// const handleSpades = () => {
+//   setSpadesState(!spadesState);
+//   console.log(spadesState);
+// };
+
+// const cardFilters = () => {
+//   let filteredCardArray = cardState.filter((card) => {
+//     if (spadesState === "true") {
+//       return spadesState.suit === "spades";
+//     }
+//   });
+//   return filteredCardArray;
+// };
+
 // } else return card;
 // if (card.suit === suit) return suit;
 // return card.suit === suit;
